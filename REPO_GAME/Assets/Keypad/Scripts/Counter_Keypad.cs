@@ -26,8 +26,8 @@ namespace NavKeypad
         [SerializeField] private Counter_KeypadButton enterButton;
 
         [Header("Visuals")]
-        [SerializeField] private string accessGrantedText = "Granted";
-        [SerializeField] private string accessDeniedText = "Denied";
+        [SerializeField] private string accessGrantedText = "OK";
+        [SerializeField] private string accessDeniedText = "X";
         [SerializeField] private string waitingForEnterText = "Press Enter";
         [SerializeField] private float displayResultTime = 1f;
         [Range(0, 5)]
@@ -67,12 +67,19 @@ namespace NavKeypad
                 Debug.LogWarning($"Not enough valid buttons assigned. Need {requiredUniquePresses}, have {validButtons.Count}");
             }
 
-            ClearState();
+            
             panelMesh.material.SetColor("_EmissionColor", screenNormalColor * screenIntensity);
+        }
+
+        private void Start()
+        {
+            ClearState();
         }
 
         public void AddInput(string input)
         {
+            Debug.Log("Current input: " + input);
+
             if (displayingResult || accessWasGranted) return;
 
             // Handle enter button press
@@ -156,9 +163,11 @@ namespace NavKeypad
 
         private void ClearState()
         {
+            Debug.Log("CLEAR STATE CALLED");
             pressedButtons.Clear();
             waitingForEnter = false;
             keypadDisplayText.text = $"0/{requiredUniquePresses}";
+            keypadDisplayText.ForceMeshUpdate();
             panelMesh.material.SetColor("_EmissionColor", screenNormalColor * screenIntensity);
         }
     }

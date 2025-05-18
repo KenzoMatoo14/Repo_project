@@ -29,8 +29,15 @@ namespace NavKeypad
             }
         }
 
+        private void OnMouseDown()
+        {
+            PressButton();
+        }
+
         public void PressButton()
         {
+            Debug.Log("PressButton was called");
+
             if (!moving && keypad != null)
             {
                 keypad.AddInput(value);
