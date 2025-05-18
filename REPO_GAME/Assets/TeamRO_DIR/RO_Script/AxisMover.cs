@@ -5,6 +5,10 @@ public class AxisMover : MonoBehaviour
 {
     public enum MoveAxis { X, Y, Z }
 
+    [Header("Target Settings")]
+    [Tooltip("Assign the object you want to move.")]
+    public Transform target;
+
     [Header("Movement Settings")]
     public MoveAxis axis = MoveAxis.Y;
     public float offset = 0.25f;
@@ -18,19 +22,26 @@ public class AxisMover : MonoBehaviour
 
     private void Start()
     {
-        originalPos = transform.localPosition;
+        if (target == null)
+        {
+            Debug.LogError("AxisMover: No target assigned.");
+            enabled = false;
+            return;
+        }
+
+        originalPos = target.localPosition;
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Left-click
+        if (Input.GetMouseButtonDown(0)) // Right-click
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
                 if (hit.transform == transform)
                 {
-                    Debug.Log("Left-clicked on: " + gameObject.name);
+                    Debug.Log("Right-clicked on: " + gameObject.name);
                     if (!moving)
                     {
                         StartCoroutine(MoveSmooth());
@@ -55,7 +66,7 @@ public class AxisMover : MonoBehaviour
     {
         moving = true;
 
-        Vector3 startPos = transform.localPosition;
+        Vector3 startPos = target.localPosition;
         Vector3 endPos;
 
         if (toggle && moved)
@@ -76,18 +87,18 @@ public class AxisMover : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             float t = Mathf.Clamp01(elapsedTime / moveSpeed);
-            transform.localPosition = Vector3.Lerp(startPos, endPos, t);
+            target.localPosition = Vector3.Lerp(startPos, endPos, t);
             yield return null;
         }
 
-        transform.localPosition = endPos;
+        target.localPosition = endPos;
 
         if (!toggle)
         {
             yield return new WaitForSeconds(holdTime);
 
             // Return to original position
-            startPos = transform.localPosition;
+            startPos = target.localPosition;
             endPos = originalPos;
 
             elapsedTime = 0f;
@@ -95,11 +106,11 @@ public class AxisMover : MonoBehaviour
             {
                 elapsedTime += Time.deltaTime;
                 float t = Mathf.Clamp01(elapsedTime / moveSpeed);
-                transform.localPosition = Vector3.Lerp(startPos, endPos, t);
+                target.localPosition = Vector3.Lerp(startPos, endPos, t);
                 yield return null;
             }
 
-            transform.localPosition = endPos;
+            target.localPosition = endPos;
         }
 
         moving = false;
