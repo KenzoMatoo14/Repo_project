@@ -6,9 +6,24 @@ namespace KeypadSystem
     {
         [SerializeField] private string buttonId;
 
-        private SimpleKeypadChecker keypad;
+        [SerializeField] private SimpleKeypadChecker keypad;
 
         public bool IsPressed { get; private set; }
+
+        private void Update()
+        {
+            if (Input.GetMouseButtonDown(0)) // Right-click
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out RaycastHit hit))
+                {
+                    if (hit.transform == transform)
+                    {
+                        PressButton();
+                    }
+                }
+            }
+        }
 
         public void RegisterWithKeypad(SimpleKeypadChecker targetKeypad)
         {
@@ -20,7 +35,7 @@ namespace KeypadSystem
             if (IsPressed) return;
 
             IsPressed = true;
-            keypad?.AddInput(buttonId);
+            keypad.UpdateKeypadDisplay();
         }
 
         public void ResetButton()
