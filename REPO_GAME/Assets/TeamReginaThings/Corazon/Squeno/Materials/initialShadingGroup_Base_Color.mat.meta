@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: ebbdec512a77d4f289a34bb123c45949
+timeCreated: 1538737460
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: heartbreak
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 168191
+  packageName: Low Poly 3D Animated Broken Heart
+  packageVersion: 1.0
+  assetPath: Assets/Scanta/Squeno/Materials/initialShadingGroup_Base_Color.mat
+  uploadId: 418247
