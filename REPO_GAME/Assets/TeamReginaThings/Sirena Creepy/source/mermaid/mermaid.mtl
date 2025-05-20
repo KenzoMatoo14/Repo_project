@@ -1,0 +1,27 @@
+# File produced by Open Asset Import Library (http://www.assimp.sf.net)
+# (assimp v3.1.206520482)
+
+newmtl Body
+kd 0.260136 0.452197 0.8
+illum 1
+
+newmtl Head
+kd 0.8 0.8 0.8
+illum 1
+
+newmtl Teeth
+kd 1 1 1
+illum 1
+
+newmtl Hair
+kd 0.229644 0.214812 0.503694
+illum 1
+
+newmtl Hair.001
+kd 0.229644 0.214812 0.503694
+illum 1
+
+newmtl Eyes
+kd 1 1 1
+illum 1
+

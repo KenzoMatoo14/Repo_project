@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  bodyRenderer: {fileID: 0}
 --- !u!114 &7084083908971875742
 MonoBehaviour:
   m_ObjectHideFlags: 0
