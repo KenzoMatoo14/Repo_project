@@ -2902,7 +2902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4855c5c6d4acaf4ba39b528500da927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 5608202080528317625, guid: 8827df8794687cf42a00a39c400e9552, type: 2}
+  mat: {fileID: 2100000, guid: 82e37ad3ce4c7db43987da85ddc85243, type: 2}
   spotLightObject: {fileID: 1708582715}
 --- !u!114 &1391502970
 MonoBehaviour:
@@ -4045,6 +4045,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2941331133827197400, guid: b03a772c17787944aaf733f26286166d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3952130907774562095, guid: b03a772c17787944aaf733f26286166d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5370886159542046278, guid: b03a772c17787944aaf733f26286166d, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
