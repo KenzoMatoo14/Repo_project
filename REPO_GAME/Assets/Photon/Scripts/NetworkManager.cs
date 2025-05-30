@@ -25,7 +25,20 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("¡Entraste a la sala!");
 
-        // Spawnea jugador
-        PhotonNetwork.Instantiate("REPO Animation Sketchfab", new Vector3(-10.50564f, 0.0f, 43.7599983f), Quaternion.identity);
+        // Cargar datos de personalización
+        object[] instantiationData = new object[] { PlayerCustomizationData.selectedColor };
+
+        // Instanciar al jugador con los datos
+        PhotonNetwork.Instantiate("REPO Animation Sketchfab", new Vector3(-10.50564f, 0.0f, 43.7599983f), Quaternion.identity, 0, new object[] { });
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.InstantiateRoomObject("instanceKenzao", Vector3.zero, Quaternion.identity);
+            PhotonNetwork.InstantiateRoomObject("instanceRegina", Vector3.zero, Quaternion.identity);
+            PhotonNetwork.InstantiateRoomObject("instanceSoto", Vector3.zero, Quaternion.identity);
+            PhotonNetwork.InstantiateRoomObject("instanceZatarain", Vector3.zero, Quaternion.identity);
+            PhotonNetwork.InstantiateRoomObject("intanceRo", Vector3.zero, Quaternion.identity);
+
+            // Y así con todas
+        }
     }
 }

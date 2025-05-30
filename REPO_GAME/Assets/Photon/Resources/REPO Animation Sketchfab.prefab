@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  bodyRenderer: {fileID: 3130007046795700820}
 --- !u!114 &7333624219539121195
 MonoBehaviour:
   m_ObjectHideFlags: 0
