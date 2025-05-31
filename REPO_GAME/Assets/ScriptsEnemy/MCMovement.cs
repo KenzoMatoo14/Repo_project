@@ -6,7 +6,7 @@ public class MCMovement : MonoBehaviour
     private CharacterController controller;
     
     // Velocidad de movimiento del personaje (modificable en el Inspector)
-    private float playerSpeed = 10.0f;
+    private float playerSpeed = 5.0f;
     
     // Referencia al Transform de la cámara (debe asignarse en el Inspector)
     public Transform cameraTransform;
