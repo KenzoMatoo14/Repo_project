@@ -2652,7 +2652,7 @@ Material:
     - _FaceColor: {r: 0, g: 0.035871506, b: 1, a: 1}
     - _GlowColor: {r: 0, g: 1, b: 0, a: 0.5}
     - _LightDir: {r: 0.62551767, g: -0, b: 0.7802106, a: 0}
-    - _LightPos: {r: -29.975307, g: 6.54, b: 40.50364, a: 0}
+    - _LightPos: {r: -29.008093, g: 7.91, b: 39.729362, a: 0}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
     - _OutlineColor: {r: 0, g: 0.027633667, b: 1, a: 0}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
