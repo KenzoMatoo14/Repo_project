@@ -3,6 +3,7 @@ using UnityEngine;
 public class ParticleElectric : MonoBehaviour
 {
     public GameObject particlePrefab; // Prefab del sistema de partículas
+    public string objectTag = "Player";
     private GameObject currentParticles; // Referencia a las partículas instanciadas
     private bool isEffectActive = false; // Controla si el efecto está activo
     private float effectTimer = 0f; // Temporizador del efecto
@@ -26,7 +27,7 @@ public class ParticleElectric : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Verifica si el objeto que colisiona tiene un tag (opcional, ajusta según tu juego)
-        if (other.CompareTag("Player"))
+        if (other.CompareTag(objectTag))
         {
             StartEffect();
         }
