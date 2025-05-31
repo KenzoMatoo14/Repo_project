@@ -7,7 +7,6 @@ public class GlobalSoundSource : MonoBehaviour
     [Range(0.1f, 10f)]
     public float volumeIntensity = 1f;
     public bool isActive = false;
-    
     // Keyboard activation
     public KeyCode activationKey = KeyCode.None;
     

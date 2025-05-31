@@ -6,6 +6,7 @@ public class ParticleElectric : MonoBehaviour
     private GameObject currentParticles; // Referencia a las partículas instanciadas
     private bool isEffectActive = false; // Controla si el efecto está activo
     private float effectTimer = 0f; // Temporizador del efecto
+    public float effectTime = 1f;
 
     void Update()
     {
@@ -14,7 +15,7 @@ public class ParticleElectric : MonoBehaviour
         {
             effectTimer += Time.deltaTime;
 
-            if (effectTimer >= 1f)
+            if (effectTimer >= effectTime)
             {
                 StopEffect();
             }
@@ -22,20 +23,21 @@ public class ParticleElectric : MonoBehaviour
     }
 
     // Método llamado cuando ocurre una colisión
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         // Verifica si el objeto que colisiona tiene un tag (opcional, ajusta según tu juego)
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             StartEffect();
         }
     }
 
     // Activa el efecto de partículas
-    private void StartEffect()
+    public void StartEffect()
     {
         if (!isEffectActive)
         {
+            Debug.Log("PARTICLE INSTANTIATED");
             // Instancia las partículas y las guarda en currentParticles
             currentParticles = Instantiate(particlePrefab, transform.position, Quaternion.identity);
             isEffectActive = true;
