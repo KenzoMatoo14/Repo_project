@@ -101,6 +101,7 @@ public class WaterDropSystem : MonoBehaviour
         }
     }
 
+    /*
     void EmitirGotas()
     {
         if (sistemaGotas != null)
@@ -113,7 +114,32 @@ public class WaterDropSystem : MonoBehaviour
             ReproducirSonidoGota();
         }
     }
+    */
 
+    void EmitirGotas()
+    {
+        if (sistemaGotas != null)
+        {
+            Debug.Log("Emitting from position: " + sistemaGotas.transform.position);
+            Debug.DrawRay(sistemaGotas.transform.position, Vector3.down * 5f, Color.red, 2f);
+            // Enable emission and set burst count
+            var emission = sistemaGotas.emission;
+            emission.enabled = true; // Ensure emission is on
+
+            // Trigger a burst of particles
+            int cantidad = Random.Range(1, gotasPorVez + 1);
+            sistemaGotas.Play(); // Start the system if not playing
+
+            // Optional: Use Bursts (if you want precise control)
+            emission.SetBurst(0, new ParticleSystem.Burst(1f, cantidad));
+            Debug.Log("GOTEAANDOOOOOOOOOOOOOOOOOO");
+
+            ReproducirSonidoGota();
+        }
+        else {
+            Debug.Log("NO DROPS EMMITED BRUH");
+        }
+    }
     void ReproducirSonidoGota()
     {
         if (audioGotas != null && sonidosGota != null && sonidosGota.Length > 0)
