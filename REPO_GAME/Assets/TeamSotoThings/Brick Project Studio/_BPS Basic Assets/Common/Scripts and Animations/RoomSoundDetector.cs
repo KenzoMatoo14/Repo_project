@@ -7,17 +7,26 @@ public class RoomSoundDetector : MonoBehaviour
 
     private BurgerLogic bl;
     private float timer = 2f;
-    private bool canBeep = false; 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private bool canBeep = false;
+
     void Start()
     {
-        bl = burger.GetComponent<BurgerLogic>();
+        // Verificar si burger es nulo antes de intentar acceder a BurgerLogic
+        if (burger != null)
+        {
+            bl = burger.GetComponent<BurgerLogic>();
+        }
+        else
+        {
+            Debug.LogError("No se ha asignado un objeto burger en el inspector.");
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (timer < 0 && canBeep) {
+        // Verificar si bl es nulo antes de usarlo
+        if (bl != null && timer < 0 && canBeep)
+        {
             bl.beep();
             timer = 2f;
         }
@@ -25,14 +34,18 @@ public class RoomSoundDetector : MonoBehaviour
         timer -= Time.deltaTime;
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.CompareTag("Player")) {
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
             canBeep = true;
         }
     }
 
-    private void OnTriggerExit(Collider other) {
-        if (other.gameObject.CompareTag("Player")) {
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
             canBeep = false;
         }
     }
