@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class GlobalSoundSource : MonoBehaviour
+public class UV_GlobalSoundSource : MonoBehaviour
 {
     // Audio settings
     [Range(0.1f, 10f)]
@@ -9,7 +9,6 @@ public class GlobalSoundSource : MonoBehaviour
     public bool isActive = false;
     // Keyboard activation
     public KeyCode activationKey = KeyCode.None;
-    public string objectTag = "Player";
     
     // Visual settings for debugging
     public Color sourceColor = Color.yellow;
@@ -101,10 +100,10 @@ public class GlobalSoundSource : MonoBehaviour
         Debug.Log("Algo tocó la trampa: " + other.name + " con tag: " + other.tag);
         
         // Solo activar si es una trampa Y el objeto que colisiona es un Player
-        if (isTrap && other.CompareTag(objectTag))
+        if (isTrap && other.CompareTag("UV_Tag"))
         {
             ActivateTrap();
-            Debug.Log("¡Trampa activada por "+ objectTag + "!");
+            Debug.Log("¡Trampa activada por Luz UV!");
         }
         
         // Los enemigos NO activarán las trampas, aunque colisionen con ellas
